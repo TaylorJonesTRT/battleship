@@ -1,16 +1,34 @@
-const ship = (name: string, length: number) => {
-  const hitArray: string[] = [];
-  const hit = (num: number) => {
+class Ship {
+  shipName: string;
+
+  length: number;
+
+  position: number;
+
+  hits: string[];
+
+  isSunk: boolean;
+
+  constructor(name: string, length: number, position: number, hits: string[]) {
+    this.shipName = name;
+    this.length = length;
+    this.position =  position;
+    this.hits = hits;
+    this.isSunk = false;
+  }
+
+  hit = (num: number) => {
     for (let i = 0; i < num; i++) {
-      hitArray.push('x');
+      this.hits.push('x');
     }
   };
-  const isShipSunk = () => {
-    if (hitArray.length >= length) {
-      return true;
-    }  return false;
-  };
-  return { name, length, hitArray, hit, isShipSunk };
-};
 
-export default ship;
+  isShipSunk = () => {
+    if (this.hits.length >= this.length) {
+      return true;
+    } return false;
+  };
+
+}
+
+export default Ship;
