@@ -1,45 +1,45 @@
-import ship from '../code/ship';
+import Ship from '../code/ship';
 
 test('Test: Making sure a new ship is not sunk', () => {
-  const shiptest = ship('test ship', 8);
-  expect(shiptest.isShipSunk()).toBe(false);
+  const shiptest = new Ship('test ship', 8, 0, []);
+  expect(shiptest.isSunk).toBe(false);
 });
 
 test('Test: Testing ship name', () => {
-  const shiptest = ship('test ship', 8);
-  expect(shiptest.name).toBe('test ship');
+  const shiptest = new Ship('test ship', 8, 0, []);
+  expect(shiptest.shipName).toBe('test ship');
 });
 
 test('Test: Making sure ship length is set correctly', () => {
-  const shiptest = ship('test ship', 8);
+  const shiptest = new Ship('test ship', 8, 0, []);
   expect(shiptest.length).toBe(8);
 });
 
 test('Test: Ship has an empty array', () => {
-  const shiptest = ship('test ship', 8);
-  expect(shiptest.hitArray).toStrictEqual([]);
+  const shiptest = new Ship('test ship', 8, 0, []);
+  expect(shiptest.hits).toStrictEqual([]);
 });
 
 test('hitArray: Hitting a ship should add to the hitArray ... 7', () => {
-  const shiptest = ship('test ship', 8);
+  const shiptest = new Ship('test ship', 8, 0, []);
   shiptest.hit(7);
-  expect(shiptest.hitArray).toStrictEqual(['x', 'x', 'x', 'x', 'x', 'x', 'x']);
+  expect(shiptest.hits).toStrictEqual(['x', 'x', 'x', 'x', 'x', 'x', 'x']);
 });
 
 test('hitArray: Hitting a ship should add to the hitArray... 8', () => {
-  const shiptest = ship('test ship', 8);
+  const shiptest = new Ship('test ship', 8, 0, []);
   shiptest.hit(8);
-  expect(shiptest.hitArray).toStrictEqual(['x', 'x', 'x', 'x', 'x', 'x', 'x', 'x']);
+  expect(shiptest.hits).toStrictEqual(['x', 'x', 'x', 'x', 'x', 'x', 'x', 'x']);
 });
 
 test('Sunk Test: If a ships hitMarker array is not the length of ship', () => {
-  const shiptest = ship('test ship', 8);
+  const shiptest = new Ship('test ship', 8, 0, []);
   shiptest.hit(7);
   expect(shiptest.isShipSunk()).toBeFalsy();
 });
 
 test('Sunk Test: If shipArray has the same amount of hits as length', () => {
-  const shiptest = ship('test ship', 8);
+  const shiptest = new Ship('test ship', 8, 0, []);
   shiptest.hit(8);
   expect(shiptest.isShipSunk).toBeTruthy();
 });
