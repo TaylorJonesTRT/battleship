@@ -30,6 +30,3 @@ test('Placing a ship at a starting point that will make the ship go off the boar
     gameboardTest.placeShip(7, 5, 'hor');
   }).toThrow('Ship cannot be placed there');
 });
-
-// Todo: Need to add tests to make sure an error is returned if ship placed
-// todo: at a starting point where its end point will be "off the board"

@@ -16,8 +16,8 @@ class Gameboard {
   };
 
   placeShip = (start: number, shipLength: number, rotation: string) => {
-    // eslint-disable-next-line no-useless-catch
     try {
+      // todo: Need to refactor the code below to encompass all illegal moves
       if (start === 7 && shipLength > 4) throw new Error('Ship cannot be placed there');
 
       if (rotation === 'hor') {
@@ -32,9 +32,12 @@ class Gameboard {
       }
     }
     catch (e) {
-      throw e;
-      console.log(e);
+      this.handleError(e);
     }
+  };
+
+  handleError = (error: string) => {
+    throw new Error(error);
   };
 }
 
