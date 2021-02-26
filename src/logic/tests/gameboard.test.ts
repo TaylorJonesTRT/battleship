@@ -24,9 +24,17 @@ test('Gameboard: Placing a Ship vertically starting on spot 4', () => {
   });
 });
 
+// todo: add more of these to cover other cases
 test('Placing a ship at a starting point that will make the ship go off the board should return an error', () => {
   const gameboardTest = new Gameboard();
   expect(() => {
     gameboardTest.placeShip(7, 5, 'hor');
   }).toThrow('Ship cannot be placed there');
+});
+
+test('Ship rotation must be either "hor" or "vert" when calling placeShip (error handling)', () => {
+  const gameboardTest = new Gameboard();
+  expect(() => {
+    gameboardTest.placeShip(1, 3, 'sideways');
+  }).toThrow('Rotation can only be either vert or hor');
 });
