@@ -18,6 +18,8 @@ class Ship {
   }
 
   hit = (num: number) => {
+    // Todo: Need to refactor to accept another argument of the location on the ship where there
+    // todo: was a valid hit
     for (let i = 0; i < num; i++) {
       this.hits.push('x');
     }
