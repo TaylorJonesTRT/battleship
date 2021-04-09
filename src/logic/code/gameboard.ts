@@ -1,7 +1,10 @@
 class Gameboard {
   board: any[];
 
-  constructor() {
+  belongsTo: string;
+
+  constructor(belongsTo: string) {
+    this.belongsTo = belongsTo;
     this.board = [];
     this.init();
   }
