@@ -23,9 +23,6 @@ class Gameboard {
   placeShip = (start: number, shipLength: number, rotation: string) => {
     try {
       // todo: Need to refactor the code below to encompass all illegal moves
-      // ? idea: figure out how to use the logic from the tic tac toe project 
-      // ? to determine what row a ship is on to be able to use that to find out 
-      // ? if a placement is illegal or not.
       if (start === 7 && shipLength > 4) throw new Error('Ship cannot be placed there');
 
       if (rotation === 'hor') {

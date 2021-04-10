@@ -13,14 +13,28 @@ test('Creating a new gameboard and setting the owner of it', () => {
   expect(testBoard.belongsTo).toBe('player');
 });
 
-test('Placing a mocked ship (for now) on the gameboard', () => {
+test('Placing a mocked ship on the gameboard', () => {
   const testBoard = new Gameboard('testing');
   const mockBoard: any[] = new Array(100).fill({
     hasShip: false,
     isShot: false
   });
-  // todo: need to remember how this was setup to handle testing the plcaements 
-  // todo: of ships on the board.
+  const shipLength: number = 3;
+  for (let i = 0; i < shipLength; i++) {
+    mockBoard[i] = { hasShip: true, isShot: false };
+  }
   testBoard.placeShip(1, 3, 'hor');
-  expect(testBoard.board).toBe(mockBoard);
+  expect(testBoard.board).toStrictEqual(mockBoard);
 });
+
+// test('Placing an actual ship on the gameboard', () => {
+//   const testBoard = new Gameboard('player');
+//   const mockBoard: any[] = new Array(100).fill({
+//     hasShip: false,
+//     isShot: false
+//   });
+//   for (let i = 0; i < shipLength; i++) {
+//     mockBoard[i] = { hasShip: true, isShot: false };
+//   }
+//   testBoard.placeShip();
+// });

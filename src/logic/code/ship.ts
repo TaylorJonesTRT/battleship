@@ -1,5 +1,5 @@
 class Ship {
-  shipName: string;
+  name: string;
 
   length: number;
 
@@ -9,10 +9,13 @@ class Ship {
 
   isSunk: boolean;
 
-  constructor(name: string, length: number, position: number, hits: string[]) {
-    this.shipName = name;
+  constructor(
+    name: string,
+    length: number,
+    hits: string[] = []
+  ) {
+    this.name = name;
     this.length = length;
-    this.position =  position;
     this.hits = hits;
     this.isSunk = false;
   }
