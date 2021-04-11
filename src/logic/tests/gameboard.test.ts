@@ -24,19 +24,27 @@ test('Placing a mocked ship on the gameboard', () => {
   for (let i = 0; i < shipLength; i++) {
     mockBoard[i] = { hasShip: true, isShot: false };
   }
-  testBoard.placeShip(1, 3, 'hor');
+  testBoard.placeShip(1, 'test', 3, 'hor');
   expect(testBoard.board).toStrictEqual(mockBoard);
 });
 
-test('Placing an actual ship on the gameboard', () => {
-  const testBoard = new Gameboard('player');
+// test('Placing an actual ship on the gameboard', () => {
+//   const testBoard = new Gameboard('player');
+//   const testShip = carrier;
+//   const mockBoard: any[] = new Array(100).fill({
+//     hasShip: false,
+//     isShot: false
+//   });
+//   for (let i = 0; i < shipLength; i++) {
+//     mockBoard[i] = { hasShip: true, isShot: false };
+//   }
+//   testBoard.placeShip();
+// });
+
+test('Making sure a ship wont "fall off" the board', () => {
+  const testBoard = new Gameboard('testing');
   const testShip = carrier;
-  const mockBoard: any[] = new Array(100).fill({
-    hasShip: false,
-    isShot: false
-  });
-  for (let i = 0; i < shipLength; i++) {
-    mockBoard[i] = { hasShip: true, isShot: false };
-  }
-  testBoard.placeShip();
+  expect(() => {
+    testBoard.placeShip(7, testShip.name, testShip.length, 'hor');
+  }).toThrow('Cannot place the ship there as it is too long');
 });

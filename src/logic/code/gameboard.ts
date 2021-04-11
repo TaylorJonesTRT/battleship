@@ -30,25 +30,25 @@ class Gameboard {
       // todo: Need to make sure that ships can only be placed on a starting position that doesn't
       // todo: have the ship "hang off" of the board.
 
-      if (!start || shipName == '' || !shipLength || rotation == '') {
-        // todo: Setup a switch case in here to send down errors in case of missing arguments
-       }
+      if (shipLength > (10 - start) + 1) {
+        throw new Error('Cannot place the ship there as it is too long');
+      }
 
-      // if (start === 7 && shipLength > 4) throw new Error('Ship cannot be placed there');
+      if (start === 7 && shipLength > 4) throw new Error('Ship cannot be placed there');
 
-      // if (rotation === 'hor') {
-      //   for (let i = 0; i < shipLength; i++) {
-      //     this.board[(start - 1) + i] = { hasShip: true, isShot: false };
-      //   }
-      // } else if (rotation === 'vert') {
-      //   for (let i = 0; i < shipLength; i++) {
-      //     this.board[(start - 1) + 10] = { hasShip: true, isShot: false };
-      //   }
-      // } else {
-      //   // Since the ships rotation can only be either vertical or sideways an
-      //   // error will be thrown if it's not the correct parrameters
-      //   throw new Error('Rotation can only be either vert or hor');
-      // }
+      if (rotation === 'hor') {
+        for (let i = 0; i < shipLength; i++) {
+          this.board[(start - 1) + i] = { hasShip: true, isShot: false };
+        }
+      } else if (rotation === 'vert') {
+        for (let i = 0; i < shipLength; i++) {
+          this.board[(start - 1) + 10] = { hasShip: true, isShot: false };
+        }
+      } else {
+        // Since the ships rotation can only be either vertical or sideways an
+        // error will be thrown if it's not the correct parrameters
+        throw new Error('Rotation can only be either vert or hor');
+      }
     } catch (e) {
       // Had to create a handleError method to get past the eslint error for
       // having a "useless" catch block
