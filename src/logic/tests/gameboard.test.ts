@@ -1,4 +1,5 @@
 import Gameboard from '../code/gameboard';
+import { carrier } from '../code/shipTypes';
 
 test('Making sure the class is initialized', () => {
   const testBoard = new Gameboard('test');
@@ -27,14 +28,15 @@ test('Placing a mocked ship on the gameboard', () => {
   expect(testBoard.board).toStrictEqual(mockBoard);
 });
 
-// test('Placing an actual ship on the gameboard', () => {
-//   const testBoard = new Gameboard('player');
-//   const mockBoard: any[] = new Array(100).fill({
-//     hasShip: false,
-//     isShot: false
-//   });
-//   for (let i = 0; i < shipLength; i++) {
-//     mockBoard[i] = { hasShip: true, isShot: false };
-//   }
-//   testBoard.placeShip();
-// });
+test('Placing an actual ship on the gameboard', () => {
+  const testBoard = new Gameboard('player');
+  const testShip = carrier;
+  const mockBoard: any[] = new Array(100).fill({
+    hasShip: false,
+    isShot: false
+  });
+  for (let i = 0; i < shipLength; i++) {
+    mockBoard[i] = { hasShip: true, isShot: false };
+  }
+  testBoard.placeShip();
+});
