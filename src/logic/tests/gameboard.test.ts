@@ -22,24 +22,24 @@ test('Placing a mocked ship on the gameboard', () => {
   });
   const shipLength: number = 3;
   for (let i = 0; i < shipLength; i++) {
-    mockBoard[i] = { hasShip: true, isShot: false };
+    mockBoard[i] = { hasShip: true, isShot: false, ship: 'test' };
   }
   testBoard.placeShip(1, 'test', 3, 'hor');
   expect(testBoard.board).toStrictEqual(mockBoard);
 });
 
-// test('Placing an actual ship on the gameboard', () => {
-//   const testBoard = new Gameboard('player');
-//   const testShip = carrier;
-//   const mockBoard: any[] = new Array(100).fill({
-//     hasShip: false,
-//     isShot: false
-//   });
-//   for (let i = 0; i < shipLength; i++) {
-//     mockBoard[i] = { hasShip: true, isShot: false };
-//   }
-//   testBoard.placeShip();
-// });
+test('Placing an actual ship on the gameboard', () => {
+  const testBoard = new Gameboard('player');
+  const testShip = carrier;
+  const mockBoard: any[] = new Array(100).fill({
+    hasShip: false,
+    isShot: false
+  });
+  for (let i = 0; i < testShip.length; i++) {
+    mockBoard[i] = { hasShip: true, isShot: false };
+  }
+  testBoard.placeShip(3, testShip.name, testShip.length, 'hor');
+});
 
 test('Making sure a ship wont "fall off" the board', () => {
   const testBoard = new Gameboard('testing');
@@ -47,4 +47,11 @@ test('Making sure a ship wont "fall off" the board', () => {
   expect(() => {
     testBoard.placeShip(7, testShip.name, testShip.length, 'hor');
   }).toThrow('Cannot place the ship there as it is too long');
+});
+
+test('Checking to see what ship occupies a spot', () => {
+  const testBoard = new Gameboard('player');
+  const testShip = carrier;
+  testBoard.placeShip(1, testShip.name, testShip.length, 'hor');
+  expect(testBoard.board[1].ship).toBe('Carrier');
 });

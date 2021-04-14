@@ -27,22 +27,19 @@ class Gameboard {
     rotation: string
   ) => {
     try {
-      // todo: Need to make sure that ships can only be placed on a starting position that doesn't
-      // todo: have the ship "hang off" of the board.
-
+      // This will check to make sure when placing a ship onto the board that it will not go over
+      // any of the edges
       if (shipLength > (10 - start) + 1) {
         throw new Error('Cannot place the ship there as it is too long');
       }
 
-      if (start === 7 && shipLength > 4) throw new Error('Ship cannot be placed there');
-
       if (rotation === 'hor') {
         for (let i = 0; i < shipLength; i++) {
-          this.board[(start - 1) + i] = { hasShip: true, isShot: false };
+          this.board[(start - 1) + i] = { hasShip: true, isShot: false, ship: shipName };
         }
       } else if (rotation === 'vert') {
         for (let i = 0; i < shipLength; i++) {
-          this.board[(start - 1) + 10] = { hasShip: true, isShot: false };
+          this.board[(start - 1) + 10] = { hasShip: true, isShot: false, ship: shipName };
         }
       } else {
         // Since the ships rotation can only be either vertical or sideways an
