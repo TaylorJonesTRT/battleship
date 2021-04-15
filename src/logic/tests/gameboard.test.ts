@@ -28,17 +28,18 @@ test('Placing a mocked ship on the gameboard', () => {
   expect(testBoard.board).toStrictEqual(mockBoard);
 });
 
-test('Placing an actual ship on the gameboard', () => {
+test('Placing a ship onto the board and checking to see it is there', () => {
   const testBoard = new Gameboard('player');
   const testShip = carrier;
+  testBoard.placeShip(1, testShip.name, testShip.length, 'hor');
   const mockBoard: any[] = new Array(100).fill({
     hasShip: false,
     isShot: false
   });
   for (let i = 0; i < testShip.length; i++) {
-    mockBoard[i] = { hasShip: true, isShot: false };
+    mockBoard[i] = { hasShip: true, isShot: false, ship: testShip.name };
   }
-  testBoard.placeShip(3, testShip.name, testShip.length, 'hor');
+  expect(testBoard.board).toEqual(mockBoard);
 });
 
 test('Making sure a ship wont "fall off" the board', () => {
