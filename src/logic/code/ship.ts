@@ -11,13 +11,13 @@ class Ship {
 
   constructor(
     name: string,
-    length: number,
-    hits: string[] = []
+    length: number
   ) {
     this.name = name;
     this.length = length;
-    this.hits = hits;
+    this.hits = [];
     this.isSunk = false;
+    this.init();
   }
 
   init = () => {
@@ -72,14 +72,13 @@ class Ship {
   // };
 
   hit = (location: number) => {
-    const hitLocation: number = location - 1;
-    this.hits[hitLocation] = 'x';
+    this.hits[location - 1] = 'X';
   };
 
   isShipSunk = () => {
-    if (this.hits.length >= this.length) {
-      return true;
-    } return false;
+    if (this.hits.length === this.length) {
+      this.isSunk = true;
+    } 
   };
 
 }
