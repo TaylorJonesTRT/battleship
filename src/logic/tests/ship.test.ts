@@ -54,17 +54,17 @@ import { carrier } from '../code/shipTypes';
 //   }).toThrow('There is already a shop in that spot, choose another.');
 // });
 
-test('Test: Making sure a new ship is not sunk', () => {
+test('Making sure a new ship is not sunk', () => {
   const shiptest = new Ship('test ship', 8, 0, []);
   expect(shiptest.isSunk).toBe(false);
 });
 
-test('Test: Testing ship name', () => {
+test('Testing ship name', () => {
   const shiptest = new Ship('test ship', 8, 0, []);
   expect(shiptest.name).toBe('test ship');
 });
 
-test('Test: Making sure ship length is set correctly', () => {
+test('Making sure ship length is set correctly', () => {
   const shiptest = new Ship('test ship', 8, 0, []);
   expect(shiptest.length).toBe(8);
 });
@@ -109,13 +109,13 @@ test('Sinking a ship and making sure it is registered as sunk', () => {
 //   expect(shiptest.hits).toStrictEqual(['x', 'x', 'x', 'x', 'x', 'x', 'x', 'x']);
 // });
 
-// test('Sunk Test: If a ships hitMarker array is not the length of ship', () => {
+// test('Sunk If a ships hitMarker array is not the length of ship', () => {
 //   const shiptest = new Ship('test ship', 8, 0, []);
 //   shiptest.hit(7);
 //   expect(shiptest.isShipSunk()).toBeFalsy();
 // });
 
-// test('Sunk Test: If shipArray has the same amount of hits as length', () => {
+// test('Sunk If shipArray has the same amount of hits as length', () => {
 //   const shiptest = new Ship('test ship', 8, 0, []);
 //   shiptest.hit(8);
 //   expect(shiptest.isShipSunk).toBeTruthy();
